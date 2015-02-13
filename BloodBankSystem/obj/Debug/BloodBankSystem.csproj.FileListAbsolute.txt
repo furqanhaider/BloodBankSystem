@@ -1,27 +1,3 @@
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.pdb
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Antlr3.Runtime.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\EntityFramework.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Newtonsoft.Json.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Mvc.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Optimization.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Providers.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Razor.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Razor.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\WebGrease.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\EntityFramework.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Newtonsoft.Json.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Mvc.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Razor.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Razor.xml
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.dll
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.pdb
-C:\Users\Furqan\Documents\Visual Studio 2012\Projects\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.csprojResolveAssemblyReference.cache
 I:\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.dll
 I:\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.pdb
 I:\BloodBankSystem\BloodBankSystem\bin\Antlr3.Runtime.dll
@@ -52,10 +28,33 @@ I:\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Razor.xml
 I:\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.csprojResolveAssemblyReference.cache
 I:\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.dll
 I:\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.pdb
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\BloodBankSystem.pdb
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Antlr3.Runtime.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\EntityFramework.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Newtonsoft.Json.dll
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.dll
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.Web.Common.dll
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.Web.Mvc.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Mvc.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Optimization.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Providers.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Razor.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Razor.dll
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\WebActivator.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\WebGrease.dll
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.xml
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.Web.Common.xml
 C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Ninject.Web.Mvc.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\EntityFramework.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\Newtonsoft.Json.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Mvc.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.Razor.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\bin\System.Web.WebPages.Razor.xml
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.dll
+C:\Users\Furqan\documents\visual studio 2012\Projects\BloodBankSystem\BloodBankSystem\obj\Debug\BloodBankSystem.pdb
