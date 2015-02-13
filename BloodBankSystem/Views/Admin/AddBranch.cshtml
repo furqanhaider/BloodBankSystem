@@ -1,0 +1,57 @@
+﻿@model BloodBankSystem.Models.Branch
+
+@{
+    ViewBag.Title = "AddBranch";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AddBranch</h2>
+@if (ViewBag.Status == null)
+{
+    using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Branch</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.title)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.title, new { @class = "input-text" })
+                @Html.ValidationMessageFor(model => model.title)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.location)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.location, new { @class = "input-text" })
+                @Html.ValidationMessageFor(model => model.location)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.city)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.city, new { @class = "input-text" })
+                @Html.ValidationMessageFor(model => model.city)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+}
+else if(ViewBag.Status)
+{
+    <p class="msg done">Branch (ID : @ViewBag.BranchId) Added Successfully...</p>
+}
+else
+{
+    <p class="msg error">Branch Not Added, Try Again Later...</p>
+}
+
+

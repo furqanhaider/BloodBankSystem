@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BloodBankDbModelStoreContainer" CdmEntityContainer="BloodBankDbEntities">
+    <EntitySetMapping Name="BloodBags">
+      <EntityTypeMapping TypeName="BloodBankDbModel.BloodBag">
+        <MappingFragment StoreEntitySet="BloodBags">
+          <ScalarProperty Name="bagID" ColumnName="bagID" />
+          <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodGroups">
+      <EntityTypeMapping TypeName="BloodBankDbModel.BloodGroup">
+        <MappingFragment StoreEntitySet="BloodGroups">
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="NoOfDonors" ColumnName="NoOfDonors" />
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="BloodBankDbModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="branchID" ColumnName="branchID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="labAssistantID" ColumnName="labAssistantID" />
+          <ScalarProperty Name="registeredDonors" ColumnName="registeredDonors" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonationLogs">
+      <EntityTypeMapping TypeName="BloodBankDbModel.DonationLog">
+        <MappingFragment StoreEntitySet="DonationLog">
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+          <ScalarProperty Name="supplyDate" ColumnName="supplyDate" />
+          <ScalarProperty Name="branchID" ColumnName="branchID" />
+          <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donors">
+      <EntityTypeMapping TypeName="BloodBankDbModel.Donor">
+        <MappingFragment StoreEntitySet="Donors">
+          <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+          <ScalarProperty Name="cnic" ColumnName="cnic" />
+          <ScalarProperty Name="donorID" ColumnName="donorID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="branchID" ColumnName="branchID" />
+          <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+          <ScalarProperty Name="regFormID" ColumnName="regFormID" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="lastDonationTime" ColumnName="lastDonationTime" />
+          <ScalarProperty Name="totalDonations" ColumnName="totalDonations" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="BloodBankDbModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="empID" ColumnName="empID" />
+          <ScalarProperty Name="empName" ColumnName="empName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="joiningDate" ColumnName="joiningDate" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="branchID" ColumnName="branchID" />
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recepients">
+      <EntityTypeMapping TypeName="BloodBankDbModel.Recepient">
+        <MappingFragment StoreEntitySet="Recepients">
+          <ScalarProperty Name="recepientID" ColumnName="recepientID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegForms">
+      <EntityTypeMapping TypeName="BloodBankDbModel.RegForm">
+        <MappingFragment StoreEntitySet="RegForms">
+          <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+          <ScalarProperty Name="cnic" ColumnName="cnic" />
+          <ScalarProperty Name="formID" ColumnName="formID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="branchID" ColumnName="branchID" />
+          <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+          <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="formStatus" ColumnName="formStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="BloodBankDbModel.Request">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+          <ScalarProperty Name="reqBloodGroup" ColumnName="reqBloodGroup" />
+          <ScalarProperty Name="recepientID" ColumnName="recepientID" />
+          <ScalarProperty Name="reqQuantity" ColumnName="reqQuantity" />
+          <ScalarProperty Name="reqStatus" ColumnName="reqStatus" />
+          <ScalarProperty Name="supplyDate" ColumnName="supplyDate" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="requiredDate" ColumnName="requiredDate" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BloodBankDbModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="empID" ColumnName="empID" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

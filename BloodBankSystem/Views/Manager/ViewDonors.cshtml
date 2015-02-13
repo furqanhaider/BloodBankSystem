@@ -1,0 +1,50 @@
+﻿@model List<BloodBankSystem.Models.Donor>
+@{
+    ViewBag.Title = "ViewDonors";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>View Donors</h2>
+
+@if (ViewBag.RemoveDonorStatus != null)
+{
+    <p class="msg done">@ViewBag.RemoveDonorStatus</p>
+}
+
+@if (Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Donor ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Branch</th>
+            <th>City</th>
+            <th>Contact No.</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].donorID</td>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].gender</td>
+                <td>@Model[i].Branch.title</td>
+                <td>@Model[i].city</td>
+                <td>@Model[i].contactNo</td>
+                <td><a href="/Manager/UpdateDonor/@Model[i].donorID">Update</a></td>
+                <td><a href="/Manager/RemoveDonor/@Model[i].donorID">Remove</a></td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p class="msg info">No Donors Found...</p>
+}
+

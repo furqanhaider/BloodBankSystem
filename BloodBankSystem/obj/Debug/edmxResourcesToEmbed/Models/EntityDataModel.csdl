@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BloodBankDbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BloodBankDbEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="BloodBags" EntityType="BloodBankDbModel.BloodBag" />
+    <EntitySet Name="BloodGroups" EntityType="BloodBankDbModel.BloodGroup" />
+    <EntitySet Name="Branches" EntityType="BloodBankDbModel.Branch" />
+    <EntitySet Name="DonationLogs" EntityType="BloodBankDbModel.DonationLog" />
+    <EntitySet Name="Donors" EntityType="BloodBankDbModel.Donor" />
+    <EntitySet Name="Employees" EntityType="BloodBankDbModel.Employee" />
+    <EntitySet Name="Recepients" EntityType="BloodBankDbModel.Recepient" />
+    <EntitySet Name="RegForms" EntityType="BloodBankDbModel.RegForm" />
+    <EntitySet Name="Requests" EntityType="BloodBankDbModel.Request" />
+    <EntitySet Name="Users" EntityType="BloodBankDbModel.User" />
+    <AssociationSet Name="bloodBag_bloodGroup_fk" Association="BloodBankDbModel.bloodBag_bloodGroup_fk">
+      <End Role="BloodGroups" EntitySet="BloodGroups" />
+      <End Role="BloodBags" EntitySet="BloodBags" />
+    </AssociationSet>
+    <AssociationSet Name="donor_bloodGroup_fk" Association="BloodBankDbModel.donor_bloodGroup_fk">
+      <End Role="BloodGroups" EntitySet="BloodGroups" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="donor_branchID_fk" Association="BloodBankDbModel.donor_branchID_fk">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="employees_branchID_fk" Association="BloodBankDbModel.employees_branchID_fk">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="donationLog_requestID_fk" Association="BloodBankDbModel.donationLog_requestID_fk">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="DonationLog" EntitySet="DonationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="donor_regFormID_fk" Association="BloodBankDbModel.donor_regFormID_fk">
+      <End Role="RegForms" EntitySet="RegForms" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="requests_recepientID_fk" Association="BloodBankDbModel.requests_recepientID_fk">
+      <End Role="Recepients" EntitySet="Recepients" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BloodBag">
+    <Key>
+      <PropertyRef Name="bagID" />
+    </Key>
+    <Property Name="bagID" Type="Int32" Nullable="false" />
+    <Property Name="bloodGroup" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="branchId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BloodGroup1" Relationship="BloodBankDbModel.bloodBag_bloodGroup_fk" FromRole="BloodBags" ToRole="BloodGroups" />
+  </EntityType>
+  <EntityType Name="BloodGroup">
+    <Key>
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="title" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="NoOfDonors" Type="Int32" Nullable="false" />
+    <Property Name="branchId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BloodBags" Relationship="BloodBankDbModel.bloodBag_bloodGroup_fk" FromRole="BloodGroups" ToRole="BloodBags" />
+    <NavigationProperty Name="Donors" Relationship="BloodBankDbModel.donor_bloodGroup_fk" FromRole="BloodGroups" ToRole="Donors" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="branchID" />
+    </Key>
+    <Property Name="branchID" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="managerID" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="labAssistantID" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="registeredDonors" Type="Int32" Nullable="false" />
+    <Property Name="location" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Donors" Relationship="BloodBankDbModel.donor_branchID_fk" FromRole="Branches" ToRole="Donors" />
+    <NavigationProperty Name="Employees" Relationship="BloodBankDbModel.employees_branchID_fk" FromRole="Branches" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="DonationLog">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="Int32" Nullable="false" />
+    <Property Name="supplyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="branchID" Type="Int32" Nullable="false" />
+    <Property Name="bloodGroup" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Request" Relationship="BloodBankDbModel.donationLog_requestID_fk" FromRole="DonationLog" ToRole="Requests" />
+  </EntityType>
+  <EntityType Name="Donor">
+    <Key>
+      <PropertyRef Name="donorID" />
+    </Key>
+    <Property Name="donorID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="branchID" Type="Int32" Nullable="false" />
+    <Property Name="bloodGroup" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="regFormID" Type="Int32" Nullable="false" />
+    <Property Name="contactNo" Type="String" Unicode="false" FixedLength="false" MaxLength="14" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="lastDonationTime" Type="DateTime" Precision="0" />
+    <Property Name="totalDonations" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BloodGroup1" Relationship="BloodBankDbModel.donor_bloodGroup_fk" FromRole="Donors" ToRole="BloodGroups" />
+    <NavigationProperty Name="Branch" Relationship="BloodBankDbModel.donor_branchID_fk" FromRole="Donors" ToRole="Branches" />
+    <NavigationProperty Name="RegForm" Relationship="BloodBankDbModel.donor_regFormID_fk" FromRole="Donors" ToRole="RegForms" />
+    <Property Type="String" Name="cnic" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PicPath" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="empID" />
+    </Key>
+    <Property Name="empID" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="empName" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="joiningDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="contactNo" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="salary" Type="Int32" Nullable="false" />
+    <Property Name="branchID" Type="Int32" Nullable="false" />
+    <Property Name="job" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Branch" Relationship="BloodBankDbModel.employees_branchID_fk" FromRole="Employees" ToRole="Branches" />
+  </EntityType>
+  <EntityType Name="Recepient">
+    <Key>
+      <PropertyRef Name="recepientID" />
+    </Key>
+    <Property Name="recepientID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="contact" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Requests" Relationship="BloodBankDbModel.requests_recepientID_fk" FromRole="Recepients" ToRole="Requests" />
+  </EntityType>
+  <EntityType Name="RegForm">
+    <Key>
+      <PropertyRef Name="formID" />
+    </Key>
+    <Property Name="formID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="branchID" Type="Int32" Nullable="false" />
+    <Property Name="bloodGroup" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="contactNo" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="formStatus" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Donors" Relationship="BloodBankDbModel.donor_regFormID_fk" FromRole="RegForms" ToRole="Donors" />
+    <Property Type="String" Name="cnic" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PicPath" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="Int32" Nullable="false" />
+    <Property Name="reqBloodGroup" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <Property Name="recepientID" Type="Int32" Nullable="false" />
+    <Property Name="reqQuantity" Type="Int32" Nullable="false" />
+    <Property Name="reqStatus" Type="Int32" Nullable="false" />
+    <Property Name="supplyDate" Type="DateTime" Precision="0" />
+    <Property Name="requestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="requiredDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="location" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="DonationLog" Relationship="BloodBankDbModel.donationLog_requestID_fk" FromRole="Requests" ToRole="DonationLog" />
+    <NavigationProperty Name="Recepient" Relationship="BloodBankDbModel.requests_recepientID_fk" FromRole="Requests" ToRole="Recepients" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="empID" />
+    </Key>
+    <Property Name="empID" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="role" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="bloodBag_bloodGroup_fk">
+    <End Role="BloodGroups" Type="BloodBankDbModel.BloodGroup" Multiplicity="0..1" />
+    <End Role="BloodBags" Type="BloodBankDbModel.BloodBag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodGroups">
+        <PropertyRef Name="title" />
+      </Principal>
+      <Dependent Role="BloodBags">
+        <PropertyRef Name="bloodGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_bloodGroup_fk">
+    <End Role="BloodGroups" Type="BloodBankDbModel.BloodGroup" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodGroups">
+        <PropertyRef Name="title" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="bloodGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_branchID_fk">
+    <End Role="Branches" Type="BloodBankDbModel.Branch" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="branchID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="branchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="employees_branchID_fk">
+    <End Role="Branches" Type="BloodBankDbModel.Branch" Multiplicity="1" />
+    <End Role="Employees" Type="BloodBankDbModel.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="branchID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="branchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donationLog_requestID_fk">
+    <End Role="Requests" Type="BloodBankDbModel.Request" Multiplicity="1" />
+    <End Role="DonationLog" Type="BloodBankDbModel.DonationLog" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="requestID" />
+      </Principal>
+      <Dependent Role="DonationLog">
+        <PropertyRef Name="requestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_regFormID_fk">
+    <End Role="RegForms" Type="BloodBankDbModel.RegForm" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Donor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegForms">
+        <PropertyRef Name="formID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="regFormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requests_recepientID_fk">
+    <End Role="Recepients" Type="BloodBankDbModel.Recepient" Multiplicity="1" />
+    <End Role="Requests" Type="BloodBankDbModel.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recepients">
+        <PropertyRef Name="recepientID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="recepientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

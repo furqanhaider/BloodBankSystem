@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "SearchBlood";
+}
+
+<h2>Search Blood</h2>
+@if (ViewBag.SearchStatus != null)
+{
+    <p class="msg done">@ViewBag.SearchStatus @Html.ActionLink("Make A Request Now!", "RequestBlood", "Home")</p>
+}
+else if (ViewBag.SearchStatusErr != null)
+{
+    <p class="msg warning">@ViewBag.SearchStatusErr</p>
+}

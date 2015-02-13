@@ -1,0 +1,106 @@
+﻿@model BloodBankSystem.Models.DonorViewModel
+
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    ViewBag.Title = "Volunteer Form";
+}
+
+<h2>Volunteer Form</h2>
+
+@if(ViewBag.successMsg!=null)
+{
+    <p class="msg done">@ViewBag.successMsg</p>
+}
+else if (ViewBag.successMsg == null && ViewBag.errMsg != null)
+{
+    <p class="msg error">@ViewBag.errMsg</p>
+}
+
+@using (Html.BeginForm("Volunteer", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Donor Registration</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Name, new { @class="input-text"})
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactNo)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ContactNo, new { @maxlength = "11", @class="input-text", @type = "number"})
+            @Html.ValidationMessageFor(model => model.ContactNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cnic)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.cnic, null, new { @maxlength = "15", @class="input-text"})
+            @Html.ValidationMessageFor(model => model.cnic)
+        </div>
+        <br/>
+        <div>
+            @Html.LabelFor(model => model.BloodGroupsList)
+            @Html.DropDownListFor(model => model.bloodGroup, Model.BloodGroupsList, new { @class="input-text"})
+            @Html.ValidationMessageFor(model => model.BloodGroupsList)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dob)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.dob, new { @class="input-text", @id="datepicker"})
+            @Html.ValidationMessageFor(model => model.dob)
+        </div>
+        <br/>
+        <div>
+            @Html.LabelFor(model => model.GenderList)
+            @Html.DropDownListFor(model => model.gender, Model.GenderList, new { @class="input-text"})
+            @Html.ValidationMessageFor(model => model.GenderList)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Address, new { @class="input-text"})
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.City, new { @class="input-text"})
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+        <br/>
+        <div>
+            @Html.LabelFor(x => x.Photo)
+            @Html.TextBoxFor(x => x.Photo, new { type = "file", name = "img" })
+            @Html.ValidationMessageFor(x => x.Photo)
+        </div>
+
+        <p>
+            <input type="submit" value="Submit Application" />
+        </p>
+    </fieldset>
+}
+
+<script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+$(function() {
+$( "#datepicker1" ).datepicker();
+});
+</script>

@@ -1,0 +1,37 @@
+﻿@model List<BloodBankSystem.Models.DonationLog>
+@{
+    ViewBag.Title = "DonationLog";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<h2>Donation Log</h2>
+@if (Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Request ID</th>
+            <th>Supply Date</th>
+            <th>BranchID</th>
+            <th>Bloodgroup</th>
+            <th>Quantity(Bags)</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@Model[i].requestID</td>
+                <td>@Model[i].supplyDate</td>
+                <td>@Model[i].branchID</td>
+                <td>@Model[i].bloodGroup</td>
+                <td>@Model[i].quantity</td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p class="msg info">No Donations Found...</p>
+}

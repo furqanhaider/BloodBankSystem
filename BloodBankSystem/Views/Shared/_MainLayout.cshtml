@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Blood Bank System</title>
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/reset.css" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/main.css" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/2col.css" title="2col" />
+    <link rel="alternate stylesheet" media="screen,projection" type="text/css" href="~/Content/1col.css" title="1col" />
+    <!--[if lte IE 6]><link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/main-ie6.css" /><![endif]-->
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" media="screen,projection" type="text/css" href="~/Content/mystyle.css" />
+    <link rel="stylesheet" href="~/Content/reveal.css">
+
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/switcher.js"></script>
+    <script type="text/javascript" src="~/Scripts/toggle.js"></script>
+    <script type="text/javascript" src="~/Scripts/ui.core.js"></script>
+    <script type="text/javascript" src="~/Scripts/ui.tabs.js"></script>
+    <script type="text/javascript" src="~/Scripts/variables.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.reveal.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".tabs > ul").tabs();
+        });
+
+        function validatetrackRequestForm() {
+            var x = document.forms["trackRequest"]["trackID"].value;
+            if (x == null || x == "") {
+                alert("ID must be given...");
+                return false;
+            }
+            if (isNaN(parseFloat(x))) {
+                alert("Please enter a number...");
+                return false;
+            }
+        }
+
+        function validateSearchForm() {
+            var x = document.forms["searchForm"]["searchBloodGroup"].value;
+            var y = document.forms["searchForm"]["searchCity"].value;
+            if ((y == null || y == "") && (x == null || x == "")) {
+                alert("BloodGroup and City must be filled out");
+                return false;
+            }
+            else {
+                if (x == null || x == "") {
+                    alert("BloodGroup must be filled out");
+                    return false;
+                }
+                if (y == null || y == "") {
+                    alert("City must be filled out");
+                    return false;
+                }
+            }
+        }
+
+        function validateLoginForm() {
+            var x = document.forms["loginForm"]["userName"].value;
+            var y = document.forms["loginForm"]["password"].value;
+            if ((y == null || y == "") && (x == null || x == "")) {
+                alert("Username and Password must be filled out");
+                return false;
+            }
+            else {
+                if (x == null || x == "") {
+                    alert("Username must be filled out");
+                    return false;
+                }
+                if (y == null || y == "") {
+                    alert("Password must be filled out");
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="main">
+        <!-- Tray -->
+        <div id="tray" class="box">
+            <p class="f-left box">
+                <!-- Switcher -->
+                <span class="f-left" id="switcher"><a href="javascript:void(0);" rel="1col" class="styleswitch ico-col1" title="Display one column">
+                    <img src="~/Images/switcher-1col.gif" alt="1 Column" /></a> <a href="javascript:void(0)" rel="2col" class="styleswitch ico-col2" title="Display two columns">
+                        <img src="~/Images/switcher-2col.gif" alt="" /></a> </span><strong>Hide Side Bar</strong>
+            </p>
+            <p class="f-right">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><a href="#logIn">Log in</a></strong>
+            </p>
+        </div>
+        <!--  /tray -->
+        <hr class="noscreen" />
+        <!-- Menu -->
+        <div id="menu" class="box">
+            <ul class="box f-right">
+                <li><a href="/Home/RequestBlood"><span><strong>Make Request &raquo;</strong></span></a></li>
+                <li><a href="/Home/Volunteer"><span><strong>Volunteer &raquo;</strong></span></a></li>
+                <li><a href="/Home/WhyDonate"><span><strong>Why Donate Blood? &raquo;</strong></span></a></li>
+            </ul>
+            <ul class="box">
+                <li id="menu-active"><a href="/Home/Index"><span>Home</span></a></li>
+                <!-- Active -->
+                <li><a href="/Home/Rules"><span>Rules</span></a></li>
+                <li><a href="/Home/AboutUs"><span>About Us</span></a></li>
+                <li><a href="/Home/ContactUs"><span>Contact Us</span></a></li>
+            </ul>
+        </div>
+        <!-- /header -->
+        <hr class="noscreen" />
+        <!-- Columns -->
+        <div id="cols" class="box">
+            <!-- Aside (Left Column) -->
+            <div id="aside" class="box">
+                <div class="padding box">
+                    <!-- Logo (Max. width = 200px) -->
+                    <p id="logo">
+                        <a href="/Home/Index">
+                            <img src="~/Images/logo.gif" alt="" /></a>
+                    </p>
+                </div>
+
+                <div class="padding box">
+                    <form name="trackRequest" action="/Home/TrackRequest" onsubmit="return validatetrackRequestForm()" method="post" id="trackRequest">
+                        <fieldset>
+                            <legend>Track Request</legend>
+                            Request ID
+                            <input type="text" size="17" name="trackID" placeholder="Request ID" class="input-text" />
+                            <br>
+                            <input type="submit" value="Track" class="input-submit-02" />
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="padding box">
+                    <form name="searchForm" action="/Home/SearchBlood" onsubmit="return validateSearchForm()" method="post" id="search">
+                        <fieldset>
+                            <legend>Search Blood</legend>
+                            <p><font color="red">@TempData["SearchStatus"]</font></p>
+                            <p>
+                                <td style="width: 70px;">Bloodgroup:</td>
+                                <td>
+                                    <select name="searchBloodGroup" class="input-text">
+                                        <option value="">- Select a BloodGroup -</option>
+                                        <option value="A-">A-</option>
+                                        <option value="A+">A+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="O+">O+</option>
+                                    </select>
+                                </td>
+                                <legend>City</legend>
+                                <input type="text" size="17" name="searchCity" class="input-text" />
+                                &nbsp;
+            <input type="submit" value="Search" class="input-submit-02" />
+                                <br />
+                                <a href="javascript:toggle('search-options');" class="ico-drop">Advanced search</a>
+                            </p>
+                            <!-- Advanced search -->
+                            <div id="search-options" style="display: none;">
+                                <legend>Quantity (Bags)</legend>
+                                <input type="text" size="17" name="searchQuantity" class="input-text" />
+                            </div>
+                            <!-- /search-options -->
+                        </fieldset>
+                    </form>
+                    <!-- Create a new project -->
+
+                </div>
+                <!-- /padding -->
+
+                <!-- LOGIN FORM-->
+                <div class="padding box">
+                    <form name="loginForm" action="/Home/VerifyLogin" onsubmit="return validateLoginForm()" method="post" id="logIn">
+                        <fieldset>
+                            <legend>User Login</legend>
+                            <p><font color="red">@TempData["LogInStatus"]</font></p>
+                            Username :
+                            <input type="text" size="17" name="userName" placeholder="User Name" class="input-text" />
+                            Password :
+                            <input type="password" size="17" name="password" placeholder="Password" class="input-text" />
+                            <br>
+                            <input type="submit" value="Login" class="input-submit-02" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <!-- /aside -->
+            <hr class="noscreen" />
+            <!-- Content (Right Column) -->
+            <div id="content" class="box">
+                @RenderBody()
+            </div>
+
+            <!-- /content -->
+        </div>
+        <!-- /cols -->
+        <hr class="noscreen" />
+        <!-- Footer -->
+        <div id="footer" class="box">
+            <p class="f-left">&copy; @DateTime.Now.Year @Html.ActionLink("Blood Bank System", "Index", "Home"), All Rights Reserved &reg;</p>
+            <p class="f-right">Templates by <a href="http://www.adminizio.com/">Adminizio</a></p>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /main -->
+</body>
+</html>

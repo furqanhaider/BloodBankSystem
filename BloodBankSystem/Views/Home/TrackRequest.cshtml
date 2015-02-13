@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "TrackRequest";
+}
+
+<h2>TrackRequest</h2>
+
+@if(ViewBag.successMsg!=null)
+{
+    <p class="msg done">@ViewBag.successMsg</p>
+}
+else if (ViewBag.waitMsg != null)
+{
+    <p class="msg warning">@ViewBag.waitMsg</p>
+}
+else if (ViewBag.rejectMsg != null)
+{
+    <p class="msg error">@ViewBag.rejectMsg</p>
+}
+else if (ViewBag.errorMsg != null)
+{
+    <p class="msg error">@ViewBag.errorMsg</p>
+}

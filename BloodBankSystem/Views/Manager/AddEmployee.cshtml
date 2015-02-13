@@ -1,0 +1,103 @@
+﻿@model BloodBankSystem.Models.Employee
+
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";    
+}
+
+<h2>Add Employee</h2>
+
+@if (ViewBag.Status != null)
+{
+    <p class="msg done">@ViewBag.Status</p>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Employee Details</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.empName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.empName, new { @class = "input-text" })
+            @Html.ValidationMessageFor(model => model.empName)
+        </div>
+
+
+        <div>
+            @Html.LabelFor(model => model.GenderList)
+        </div>
+        <div>
+            @Html.DropDownListFor(model => model.gender, Model.GenderList, new { @class = "input-text" })
+            @Html.ValidationMessageFor(model => model.GenderList)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DOB)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DOB, new { @maxlength = "11", @class = "input-text", @type = "date" })
+            @Html.ValidationMessageFor(model => model.DOB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.joiningDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.joiningDate, new { @maxlength = "11", @class = "input-text", @type = "date" })
+            @Html.ValidationMessageFor(model => model.joiningDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contactNo)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.contactNo, new { @maxlength = "11", @class = "input-text", @type = "number" })
+            @Html.ValidationMessageFor(model => model.contactNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.salary)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.salary, new { @maxlength = "11", @class = "input-text", @type = "number" })
+            @Html.ValidationMessageFor(model => model.salary)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.job)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.job, new { @class = "input-text" })
+            @Html.ValidationMessageFor(model => model.job)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.address, new { @class = "input-text" })
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.city, new { @class = "input-text" })
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Add Employee" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

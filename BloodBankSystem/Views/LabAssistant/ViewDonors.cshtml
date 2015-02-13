@@ -1,0 +1,49 @@
+﻿@model List<BloodBankSystem.Models.Donor>
+@{
+    ViewBag.Title = "ViewDonors";
+    Layout = "~/Views/Shared/_LabAssistantLayout.cshtml";
+}
+
+<h2>Donors</h2>
+
+@if (ViewBag.RemoveDonorStatus != null)
+{
+    <p class="msg done">@ViewBag.RemoveDonorStatus</p>
+}
+
+@if (Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Donor ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>D.O.B</th>
+            <th>Address</th>
+            <th>Contact No.</th>
+            <th>Picture</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].donorID</td>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].gender</td>
+                <td>@Model[i].DOB</td>
+                <td>@Model[i].address</td>
+                <td>@Model[i].contactNo</td>
+                <td style="height:10px"><a class="fancybox" rel="group" href="@String.Concat("../../Images/res/"+Model[i].cnic.ToString(), ".jpg")" title="@Model[i].Name" ><img src="@String.Concat("../../Images/res/"+Model[i].cnic.ToString(), ".jpg")" alt="" height="42" width="42" /></a></td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p class="msg info">No Donors Found...</p>
+}
+
+

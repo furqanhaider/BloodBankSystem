@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="117e37353fef439f9b1d92132db96ac9" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="BloodBankDbModel.BloodBag" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.BloodGroup" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.Branch" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.DonationLog" Width="1.5" PointX="10.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.Donor" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.Employee" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.Recepient" Width="1.5" PointX="5.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.RegForm" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.Request" Width="1.5" PointX="8" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BloodBankDbModel.User" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="BloodBankDbModel.bloodBag_bloodGroup_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.donor_bloodGroup_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.donor_branchID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.employees_branchID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.donationLog_requestID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.donor_regFormID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="BloodBankDbModel.requests_recepientID_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,53 @@
+﻿@model List<BloodBankSystem.Models.RegForm>
+@{
+    ViewBag.Title = "RegisterDonor";
+    Layout = "~/Views/Shared/_LabAssistantLayout.cshtml";
+}
+
+<h2>Register Donor</h2>
+@if (ViewBag.FormStatus != null)
+{
+    <p class="msg done">@ViewBag.FormStatus</p>
+}
+
+@if (Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>D.O.B</th>
+            <th>Contact No.</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Bloodgroup</th>
+            <th>Picture</th>
+            <th>Register</th>
+            <th>Reject</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].name</td>
+                <td>@Model[i].DOB</td>
+                <td>@Model[i].contactNo</td>
+                <td>@Model[i].address</td>
+                <td>@Model[i].gender</td>
+                <td>@Model[i].bloodGroup</td>
+                <td><img src="@String.Concat("../../Images/res/"+Model[i].cnic.ToString(), ".jpg")" height="55" width="50"/></td>
+                
+                <td><a href="/LabAssistant/AcceptForm/@Model[i].formID">Register</a></td>
+                <td><a href="/LabAssistant/RejectForm/@Model[i].formID">Reject</a></td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p class="msg info">No Volunteers Found...</p>
+}
+
+

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BloodBankDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BloodBankDbModelStoreContainer">
+    <EntitySet Name="BloodBags" EntityType="BloodBankDbModel.Store.BloodBags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BloodGroups" EntityType="BloodBankDbModel.Store.BloodGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Branches" EntityType="BloodBankDbModel.Store.Branches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DonationLog" EntityType="BloodBankDbModel.Store.DonationLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Donors" EntityType="BloodBankDbModel.Store.Donors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employees" EntityType="BloodBankDbModel.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Recepients" EntityType="BloodBankDbModel.Store.Recepients" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegForms" EntityType="BloodBankDbModel.Store.RegForms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Requests" EntityType="BloodBankDbModel.Store.Requests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="BloodBankDbModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="bloodBag_bloodGroup_fk" Association="BloodBankDbModel.Store.bloodBag_bloodGroup_fk">
+      <End Role="BloodGroups" EntitySet="BloodGroups" />
+      <End Role="BloodBags" EntitySet="BloodBags" />
+    </AssociationSet>
+    <AssociationSet Name="donationLog_requestID_fk" Association="BloodBankDbModel.Store.donationLog_requestID_fk">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="DonationLog" EntitySet="DonationLog" />
+    </AssociationSet>
+    <AssociationSet Name="donor_bloodGroup_fk" Association="BloodBankDbModel.Store.donor_bloodGroup_fk">
+      <End Role="BloodGroups" EntitySet="BloodGroups" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="donor_branchID_fk" Association="BloodBankDbModel.Store.donor_branchID_fk">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="donor_regFormID_fk" Association="BloodBankDbModel.Store.donor_regFormID_fk">
+      <End Role="RegForms" EntitySet="RegForms" />
+      <End Role="Donors" EntitySet="Donors" />
+    </AssociationSet>
+    <AssociationSet Name="employees_branchID_fk" Association="BloodBankDbModel.Store.employees_branchID_fk">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="requests_recepientID_fk" Association="BloodBankDbModel.Store.requests_recepientID_fk">
+      <End Role="Recepients" EntitySet="Recepients" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BloodBags">
+    <Key>
+      <PropertyRef Name="bagID" />
+    </Key>
+    <Property Name="bagID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bloodGroup" Type="varchar" MaxLength="3" />
+    <Property Name="branchId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BloodGroups">
+    <Key>
+      <PropertyRef Name="title" />
+    </Key>
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="NoOfDonors" Type="int" Nullable="false" />
+    <Property Name="branchId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="branchID" />
+    </Key>
+    <Property Name="branchID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="managerID" Type="varchar" MaxLength="6" />
+    <Property Name="labAssistantID" Type="varchar" MaxLength="6" />
+    <Property Name="registeredDonors" Type="int" Nullable="false" />
+    <Property Name="location" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="DonationLog">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="int" Nullable="false" />
+    <Property Name="supplyDate" Type="date" Nullable="false" />
+    <Property Name="branchID" Type="int" Nullable="false" />
+    <Property Name="bloodGroup" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Donors">
+    <Key>
+      <PropertyRef Name="donorID" />
+    </Key>
+    <Property Name="donorID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="gender" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="branchID" Type="int" Nullable="false" />
+    <Property Name="bloodGroup" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="regFormID" Type="int" Nullable="false" />
+    <Property Name="contactNo" Type="varchar" MaxLength="14" />
+    <Property Name="address" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="lastDonationTime" Type="date" />
+    <Property Name="totalDonations" Type="int" Nullable="false" />
+    <Property Name="cnic" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="PicPath" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="empID" />
+    </Key>
+    <Property Name="empID" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="empName" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="gender" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="joiningDate" Type="date" Nullable="false" />
+    <Property Name="contactNo" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="salary" Type="int" Nullable="false" />
+    <Property Name="branchID" Type="int" Nullable="false" />
+    <Property Name="job" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="address" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Recepients">
+    <Key>
+      <PropertyRef Name="recepientID" />
+    </Key>
+    <Property Name="recepientID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="contact" Type="varchar" Nullable="false" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="RegForms">
+    <Key>
+      <PropertyRef Name="formID" />
+    </Key>
+    <Property Name="formID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="gender" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="branchID" Type="int" Nullable="false" />
+    <Property Name="bloodGroup" Type="varchar" MaxLength="3" />
+    <Property Name="contactNo" Type="varchar" Nullable="false" MaxLength="12" />
+    <Property Name="address" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="formStatus" Type="varchar" MaxLength="1" />
+    <Property Name="cnic" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="PicPath" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="reqBloodGroup" Type="varchar" Nullable="false" MaxLength="3" />
+    <Property Name="recepientID" Type="int" Nullable="false" />
+    <Property Name="reqQuantity" Type="int" Nullable="false" />
+    <Property Name="reqStatus" Type="int" Nullable="false" />
+    <Property Name="supplyDate" Type="date" />
+    <Property Name="requestDate" Type="date" Nullable="false" />
+    <Property Name="requiredDate" Type="date" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="50" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="empID" />
+    </Key>
+    <Property Name="empID" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="role" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="bloodBag_bloodGroup_fk">
+    <End Role="BloodGroups" Type="BloodBankDbModel.Store.BloodGroups" Multiplicity="0..1" />
+    <End Role="BloodBags" Type="BloodBankDbModel.Store.BloodBags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodGroups">
+        <PropertyRef Name="title" />
+      </Principal>
+      <Dependent Role="BloodBags">
+        <PropertyRef Name="bloodGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donationLog_requestID_fk">
+    <End Role="Requests" Type="BloodBankDbModel.Store.Requests" Multiplicity="1" />
+    <End Role="DonationLog" Type="BloodBankDbModel.Store.DonationLog" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="requestID" />
+      </Principal>
+      <Dependent Role="DonationLog">
+        <PropertyRef Name="requestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_bloodGroup_fk">
+    <End Role="BloodGroups" Type="BloodBankDbModel.Store.BloodGroups" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Store.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BloodGroups">
+        <PropertyRef Name="title" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="bloodGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_branchID_fk">
+    <End Role="Branches" Type="BloodBankDbModel.Store.Branches" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Store.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="branchID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="branchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="donor_regFormID_fk">
+    <End Role="RegForms" Type="BloodBankDbModel.Store.RegForms" Multiplicity="1" />
+    <End Role="Donors" Type="BloodBankDbModel.Store.Donors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegForms">
+        <PropertyRef Name="formID" />
+      </Principal>
+      <Dependent Role="Donors">
+        <PropertyRef Name="regFormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="employees_branchID_fk">
+    <End Role="Branches" Type="BloodBankDbModel.Store.Branches" Multiplicity="1" />
+    <End Role="Employees" Type="BloodBankDbModel.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="branchID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="branchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="requests_recepientID_fk">
+    <End Role="Recepients" Type="BloodBankDbModel.Store.Recepients" Multiplicity="1" />
+    <End Role="Requests" Type="BloodBankDbModel.Store.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recepients">
+        <PropertyRef Name="recepientID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="recepientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

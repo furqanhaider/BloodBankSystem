@@ -1,0 +1,51 @@
+﻿@model List<BloodBankSystem.Models.Branch>
+@{
+    ViewBag.Title = "ViewBranches";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ViewBranches</h2>
+
+@if (ViewBag.RemoveStatus != null)
+{
+    <p class="msg done">@ViewBag.RemoveStatus</p>
+}
+
+@if (Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Branch ID</th>
+            <th>Branch Title</th>
+            <th>Manager ID</th>
+            <th>Location</th>
+            <th>City</th>
+            <th>Registered Donors</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td>@Model[i].branchID</td>
+                <td>@Model[i].title</td>
+                <td>@Model[i].managerID</td>
+                <td>@Model[i].location</td>
+                <td>@Model[i].city</td>
+                <td>@Model[i].registeredDonors</td>
+                <td><a href="/Admin/UpdateBranch/@Model[i].branchID">Update</a></td>
+                <td><a href="/Admin/RemoveBranch/@Model[i].branchID">Remove</a></td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p class="msg info">No Branches Found...</p>
+}
+
+

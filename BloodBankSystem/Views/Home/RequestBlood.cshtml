@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewBag.Title = "RequestBlood";
+}
+
+<h2>RequestBlood</h2>
+
+@if(ViewBag.successMsg!=null)
+{
+    <p class="msg done">@ViewBag.successMsg</p>
+    <p class="msg info">@ViewBag.infoMsg</p>
+}
+else if (ViewBag.successMsg == null && ViewBag.errMsg != null)
+{
+    <p class="msg error">@ViewBag.errMsg</p>
+}
+
+@using (Html.BeginForm("RequestBlood", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+      <fieldset>
+      <legend>Blood Details</legend>
+      <table class="nostyle">
+        <tr>
+          <td style="width:70px;">Bloodgroup:</td>
+			<td>
+				<select name="requestBloodGroup" class="input-text">
+					<option value="">- Select a BloodGroup -</option>
+					<option value="A-">A-</option>
+					<option value="A+">A+</option>
+					<option value="AB-">AB-</option>
+					<option value="AB+">AB+</option>
+					<option value="B-">B-</option>
+					<option value="B+">B+</option>
+					<option value="O-">O-</option>
+					<option value="O+">O+</option>
+				</select>
+			</td>
+        </tr>
+		<tr>
+          <td style="width:100px;">Quantity (Bags):</td>
+			<td>
+				<select name="requestQuantity" class="input-text">
+					<option value="">- Select Quantity -</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</td>
+        </tr>
+        <tr>
+          <td style="width:100px;">Required Date:</td>
+          <td><input name="requestReqDate" type="text" id="datepicker" class="input-text"></td>
+        </tr>
+		<tr>
+          <td class="va-top" style="width:100px;">Location:</td>
+          <td><input name="requestLocation" type="text" class="input-text"></td>
+        </tr>
+		<tr>
+          <td class="va-top" style="width:100px;">City:</td>
+          <td><input name="requestCity" type="text" class="input-text"></td>
+        </tr>
+       </table>
+	  </fieldset>
+	  
+	 <fieldset>
+         <legend>Recepient Details</legend>
+      <table class="nostyle">
+        <tr>
+          <td class="va-top" style="width:100px;">Recepient Name:</td>
+          <td><input name="recepientName" type="text" class="input-text"></td>
+        </tr>
+		<tr>
+          <td class="va-top" style="width:100px;">Contact No.:</td>
+          <td><input name="recepientContact" type="text" class="input-text"></td>
+        </tr>
+	  </table>
+	 </fieldset>
+	 <table class="nostyle">
+		<tr>
+          <td colspan="2" class="t-right"><input type="submit" class="input-submit" value="Submit" /></td>
+        </tr>
+	 </table>
+}
